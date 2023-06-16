@@ -1,6 +1,7 @@
 package org.example.servlet;
 
 import org.example.config.Config;
+import org.example.exception.NotFoundException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.example.controller.PostController;
 
@@ -47,6 +48,9 @@ public class MainServlet extends HttpServlet {
         controller.removeById(id, resp);
         return;
       }
+      resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+    } catch (NotFoundException e) {
+      e.printStackTrace();
       resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
     } catch (Exception e) {
       e.printStackTrace();

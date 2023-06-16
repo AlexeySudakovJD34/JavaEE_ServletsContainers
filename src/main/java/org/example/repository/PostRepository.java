@@ -17,7 +17,7 @@ public class PostRepository {
   }
 
   public Optional<Post> getById(long id) {
-    return Optional.of(repo.get(id));
+    return Optional.ofNullable(repo.get(id));
   }
 
   public Post save(Post post) {
